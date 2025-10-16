@@ -1,0 +1,21 @@
+<include>
+  <user id="18901">
+    <params>
+      <param name="password" value="QA*VoIP-Test_901"/>
+      <param name="vm-password" value="901"/>
+    </params>
+    <profile-variables>
+      <variable name="18901" value="TRUE"/>
+    </profile-variables>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="901"/>
+      <variable name="user_context" value="qa-team"/>
+      <variable name="effective_caller_id_name" value="18901"/>
+      <variable name="effective_caller_id_number" value="18901"/>
+      <variable name="outbound_caller_id_name" value="$${outbound_caller_name}"/>
+      <variable name="outbound_caller_id_number" value="$${outbound_caller_id}"/>
+      <variable name="callgroup" value="QA-Team"/>
+    </variables>
+  </user>
+</include>

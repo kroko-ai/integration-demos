@@ -1,0 +1,22 @@
+<include>
+  <user id="18900">
+    <params>
+      <param name="password" value="~`! @#$%^&*()_-+={[}]|\:;'<,>.?/" />
+
+      <param name="vm-password" value="900"/>
+    </params>
+    <profile-variables>
+      <variable name="18900" value="TRUE"/>
+    </profile-variables>
+    <variables>
+      <variable name="toll_allow" value="domestic,international,local"/>
+      <variable name="accountcode" value="900"/>
+      <variable name="user_context" value="qa-team"/>
+      <variable name="effective_caller_id_name" value="18900"/>
+      <variable name="effective_caller_id_number" value="18900"/>
+      <variable name="outbound_caller_id_name" value="$${outbound_caller_name}"/>
+      <variable name="outbound_caller_id_number" value="$${outbound_caller_id}"/>
+      <variable name="callgroup" value="QA-Team"/>
+    </variables>
+  </user>
+</include>

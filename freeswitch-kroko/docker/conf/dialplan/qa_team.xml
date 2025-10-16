@@ -1,0 +1,64 @@
+<!-- QA Team accounts -->
+<context name="qa-team" >
+ <extension name="QA_Team_Extension">
+
+  <condition field="destination_number" expression="^(189[0-9][0-9])$" break="on-true">
+    <action application="set" data="answer_delay=0"/>
+    <action application="set" data="call_timeout=45"/>
+    <action application="set" data="hangup_after_bridge=true"/>
+    <action application="set" data="continue_on_fail=true"/>
+    <action application="set" data="bypass_media=true"/>
+    <action application="bridge" data="user/$1" />
+    <action application="hangup" />
+  </condition>
+
+ </extension>
+ 
+ <extension name="playback">
+  <condition field="destination_number" expression="^9999$">
+    <action application="set" data="answer_delay=0"/>
+    <action application="answer"/>
+    <action application="playback" data="viki_test.wav"/>
+    <action application="hangup" />
+  </condition>
+ </extension>
+
+ <extension name="local-ws">
+    <condition field="destination_number" expression="^99996$">
+      <action application="set" data="answer_delay=0"/>
+      <action application="answer" />
+      <action application="log" data="uuid: ${uuid}"/>
+      <action application="set" data="lang=en"/>
+      <action application="kroko_transcribe" data="${uuid} start ${lang}" />
+      <action application="bridge" data="loopback/9999/qa-team"/>
+      <action application="hangup" />
+    </condition>
+ </extension>
+
+ <extension name="api-wss">
+    <condition field="destination_number" expression="^99997$">
+      <action application="set" data="answer_delay=0"/>
+      <action application="answer" />
+      <action application="log" data="uuid: ${uuid}"/>
+      <action application="set" data="KROKO_API_KEY=<apiKey>"/>
+      <action application="set" data="KROKO_SPEECH_ENDPOINTS=true"/>
+      <action application="set" data="lang=en-US"/>
+      <action application="kroko_transcribe" data="${uuid} start ${lang}" />
+      <action application="bridge" data="loopback/9999/qa-team"/>
+      <action application="hangup" />
+    </condition>
+ </extension>
+
+ <extension name="local-conf-room">
+    <condition field="destination_number" expression="^99998$">
+      <action application="set" data="answer_delay=0"/>
+      <action application="answer" />
+      <action application="log" data="uuid: ${uuid}"/>
+      <action application="set" data="lang=en"/>
+      <action application="kroko_transcribe" data="${uuid} start ${lang}" />
+      <action application="conference" data="$1-${domain_name}@default"/>
+      <action application="hangup" />
+    </condition>
+ </extension>
+
+</context>

@@ -1,0 +1,24 @@
+# FreeSWITCH + mod_kroko_trancribe Docker container,
+# author: Dimitar Kokov,
+# version: 0.5,
+# date: 2025-10-15
+
+# docker network create kroko_mod_network
+# docker-compose up --build -d
+
+# docker-compose down -v
+
+version: "3"
+
+services:
+  kroko-freeswitch-mod:
+    image: kroko-fs
+    build:
+        context: ../
+        dockerfile: ./docker/Dockerfile
+    network_mode: "host"
+    hostname: kroko-fs
+    container_name: kroko-fs
+    environment:
+      - TZ=Europe/Sofia
+

@@ -1,0 +1,44 @@
+<configuration name="kroko_transcribe.conf" description="Kroko Configuration">
+  <system>
+	  <param name="debug" value="0"/>
+  </system>
+  <profiles>
+	<profile name="en">
+		<!-- Kroko ASR server destination hostname -->
+		<param name="host" value="localhost"/>
+
+		<!-- Kroko ASR server destination port -->
+		<param name="port" value="6006"/>
+
+		<!-- ws,wss -->
+		<param name="prot" value="ws"/>
+
+		<!-- Kroko ASR server sample_rate -->
+		<param name="sample_rate" value="16000"/>
+
+		<!-- none,json,text -->
+		<param name="result_mode" value="text"/>
+
+		<!-- Callback URL -->
+		<param name="callback_url" value="ws://127.0.0.1:8000"/>
+
+		<!-- ro, wo, rw -->
+		<param name="catched_channels" value="rw"/>
+	</profile>
+	<profile name="en-US">
+		<param name="host" value="app.kroko.ai"/>
+		<param name="port" value="443"/>
+		<param name="prot" value="wss"/>
+		<param name="sample_rate" value="16000"/>
+		<param name="callback_url" value="ws://127.0.0.1:8000"/>
+		<param name="catched_channels" value="wo"/>
+		<param name="result_mode" value="json"/>
+	</profile>
+	<profile name="bg">
+		<param name="host" value="localhost"/>
+		<param name="port" value="6007"/>
+		<param name="prot" value="wss"/>
+		<param name="sample_rate" value="8000"/>
+	</profile>
+  </profiles>
+</configuration>
