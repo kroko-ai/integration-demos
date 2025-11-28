@@ -1,0 +1,32 @@
+# Asterisk Docker container,
+# author: Dimitar Kokov,
+# version: 0.6,
+# date: 2025-11-28
+
+# docker-compose up --build -d
+
+# docker-compose down -v
+
+#version: "3"
+
+services:
+  kroko-asterisk:
+    image: kroko-ast-image
+    build:
+        context: ../
+        dockerfile: ./docker/Dockerfile
+    network_mode: "host"
+    hostname: kroko-ast
+    container_name: kroko-ast
+    volumes:
+    #/var/lib/docker/volumes/docker_asterisk_etc/_data/
+      - asterisk_etc:/etc/asterisk
+    #/var/lib/docker/volumes/docker_asterisk_sounds/_data/
+      - asterisk_sounds:/var/lib/asterisk/sounds
+    environment:
+      - TZ=Europe/Sofia
+      - API_KEY=${API_KEY}
+
+volumes:
+  asterisk_etc:
+  asterisk_sounds:

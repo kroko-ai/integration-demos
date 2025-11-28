@@ -1,0 +1,10 @@
+#! /bin/sh
+
+set -x
+libtoolize --force --automake --copy
+autoheader
+aclocal -I m4
+automake --foreign --add-missing --copy
+autoconf
+
+rm -rf autom4te.cache
